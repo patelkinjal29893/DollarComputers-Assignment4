@@ -81,7 +81,7 @@
             // 
             // DollarPictureBox
             // 
-            this.DollarPictureBox.Image = global::DollarComputers_Assignment4.Properties.Resources.SplashScreen;
+            this.DollarPictureBox.Image = global::DollarComputers_Assignment4.Properties.Resources.DollarComputers;
             this.DollarPictureBox.Location = new System.Drawing.Point(97, 54);
             this.DollarPictureBox.Name = "DollarPictureBox";
             this.DollarPictureBox.Size = new System.Drawing.Size(140, 129);
