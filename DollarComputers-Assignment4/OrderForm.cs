@@ -18,5 +18,18 @@ namespace DollarComputers_Assignment4
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// This is handler to Display AboutBox using about MenuStrips
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Created Instance of AboutBox
+            AboutBox aboutBox = new AboutBox();
+
+            //Displays about box in the new Window
+            aboutBox.ShowDialog();
+        }
     }
 }
