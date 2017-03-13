@@ -44,5 +44,12 @@ namespace DollarComputers_Assignment4
 
             productInfoForm.Show();
         }
+
+        private void SelectForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'comp1004namesDataSet.products' table. You can move, or remove it, as needed.
+            this.productsTableAdapter.Fill(this.comp1004namesDataSet.products);
+
+        }
     }
 }
