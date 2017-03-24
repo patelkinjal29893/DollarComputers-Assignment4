@@ -1,4 +1,10 @@
-﻿using System;
+﻿//App Name : AboutBox   
+//Author's Name : Kinjal Patel
+//Student ID : 200334364    
+//App Creation Date : 8th March, 2017
+//App Description : It will Displays aboutBox when the About menuStrip clicked
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;

@@ -77,5 +77,14 @@ namespace DollarComputers_Assignment4
         {
             CancelButton_Click(sender, e);
         }
+        /// <summary>
+        /// This is the handler for Select Another Product Menu Strip from the Edit Menu 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SelectAnotherProductButton_Click(sender, e);
+        }
     }
 }

@@ -19,8 +19,7 @@ namespace DollarComputers_Assignment4
     public partial class SelectForm : Form
     {
         //Reference for previous Form
-        public Form previousForm;
-
+        public Form previousForm;        
         public SelectForm()
         {
             InitializeComponent();
@@ -50,6 +49,10 @@ namespace DollarComputers_Assignment4
             // TODO: This line of code loads data into the 'comp1004namesDataSet.products' table. You can move, or remove it, as needed.
             this.productsTableAdapter.Fill(this.comp1004namesDataSet.products);
 
+            //For select full row from DataGridView
+            this.ProductListDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+      
         }
+       
     }
 }

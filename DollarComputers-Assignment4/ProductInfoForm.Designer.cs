@@ -111,7 +111,7 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // toolStripSeparator
@@ -153,6 +153,7 @@
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.selectAllToolStripMenuItem.Text = "Se&lect Another Product";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // ProductIdLabel
             // 
