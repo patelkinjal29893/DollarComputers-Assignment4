@@ -14,6 +14,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DollarComputers_Assignment4.Models;
+using System.IO;
+using System.Diagnostics;
 
 namespace DollarComputers_Assignment4
 {
@@ -115,8 +117,73 @@ namespace DollarComputers_Assignment4
 
             HDDTextBox.Text = Program.product.HDD_size;
             GPUTypeTextBox.Text = Program.product.GPU_Type;
-            WebCamTextBox.Text = Program.product.webcam;
-            
+            WebCamTextBox.Text = Program.product.webcam;            
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+            string fileName;
+
+            SaveProductFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            SaveProductFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveProductFileDialog.Title = "Save File";
+
+            result = SaveProductFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                fileName = SaveProductFileDialog.FileName;
+
+                try
+                {
+                    if(File.Exists("Product.txt"))
+                    {
+                        File.Delete("Product.txt");
+                    }
+
+                    //Open a Saved Stream 
+                    StreamWriter _writer = new StreamWriter("Product.txt", true);
+
+                    //Write all TextBox values in buffer
+                    //Write Product basic Information
+                    _writer.WriteLine(ProductIDTextBox.Text);
+                    _writer.WriteLine(ConditionTextBox.Text);
+                    _writer.WriteLine(CostTextBox.Text);
+
+                    //Write Product basic Information
+                    _writer.WriteLine(PlatformTextBox.Text);
+                    _writer.WriteLine(ManufacturerTextBox.Text);
+                    _writer.WriteLine(OSTextBox.Text);
+                    _writer.WriteLine(ModelTextBox.Text);
+
+                    //Write Product Tech Specs Information
+                    _writer.WriteLine(MemoryTextBox.Text);
+                    _writer.WriteLine(CPUBrandTextBox.Text);
+                    _writer.WriteLine(CPUTypeTextBox.Text);
+                    _writer.WriteLine(LCDSizeTextBox.Text);
+                    _writer.WriteLine(CPUNumberTextBox.Text);
+                    _writer.WriteLine(CPUSpeedTextBox.Text);
+                    _writer.WriteLine(HDDTextBox.Text);
+                    _writer.WriteLine(GPUTypeTextBox.Text);
+                    _writer.WriteLine(WebCamTextBox.Text);
+                   
+                    _writer.Close(); //Flushes to buffers
+
+                    MessageBox.Show("File Written Successfully", "File Status",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception.Message);
+                    MessageBox.Show("Error Writing File", "File Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
+
+    internal class SaveProductFileDialog
+    {
     }
 }
