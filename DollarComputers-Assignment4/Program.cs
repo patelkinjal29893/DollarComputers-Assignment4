@@ -9,23 +9,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.
+using DollarComputers_Assignment4.Models;
 
 namespace DollarComputers_Assignment4
 {
  
     static class Program
     {
-
-        public static Product product;
+        //Create a static object of product 
+        public static product product;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            //Create a public object to Use in whole application
-            product = new Product();
+            //Initiate object of product
+            product = new product();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

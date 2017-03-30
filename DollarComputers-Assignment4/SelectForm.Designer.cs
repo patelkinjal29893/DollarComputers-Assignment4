@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.ComputerListLabel = new System.Windows.Forms.Label();
             this.ProductListDataGridView = new System.Windows.Forms.DataGridView();
-            this.YourSelectionLabel = new System.Windows.Forms.Label();
-            this.YourSelectionTextBox = new System.Windows.Forms.TextBox();
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.NextButton = new System.Windows.Forms.Button();
-            this.comp1004namesDataSet = new DollarComputers_Assignment4.comp1004namesDataSet();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.productsTableAdapter = new DollarComputers_Assignment4.comp1004namesDataSetTableAdapters.productsTableAdapter();
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manufacturerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,9 +62,16 @@
             this.mousttypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.powerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.webcamDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comp1004namesDataSet = new DollarComputers_Assignment4.comp1004namesDataSet();
+            this.YourSelectionLabel = new System.Windows.Forms.Label();
+            this.YourSelectionTextBox = new System.Windows.Forms.TextBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.NextButton = new System.Windows.Forms.Button();
+            this.productsTableAdapter = new DollarComputers_Assignment4.comp1004namesDataSetTableAdapters.productsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ProductListDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comp1004namesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comp1004namesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // ComputerListLabel
@@ -80,7 +80,8 @@
             this.ComputerListLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ComputerListLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ComputerListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComputerListLabel.Location = new System.Drawing.Point(13, 13);
+            this.ComputerListLabel.Location = new System.Drawing.Point(17, 16);
+            this.ComputerListLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ComputerListLabel.Name = "ComputerListLabel";
             this.ComputerListLabel.Size = new System.Drawing.Size(257, 22);
             this.ComputerListLabel.TabIndex = 0;
@@ -89,6 +90,7 @@
             // ProductListDataGridView
             // 
             this.ProductListDataGridView.AutoGenerateColumns = false;
+            this.ProductListDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ProductListDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductListDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productIDDataGridViewTextBoxColumn,
@@ -122,67 +124,16 @@
             this.mousttypeDataGridViewTextBoxColumn,
             this.powerDataGridViewTextBoxColumn,
             this.webcamDataGridViewTextBoxColumn});
+            this.ProductListDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ProductListDataGridView.DataSource = this.productsBindingSource;
-            this.ProductListDataGridView.Location = new System.Drawing.Point(13, 38);
+            this.ProductListDataGridView.Location = new System.Drawing.Point(33, 49);
+            this.ProductListDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ProductListDataGridView.Name = "ProductListDataGridView";
             this.ProductListDataGridView.ReadOnly = true;
-            this.ProductListDataGridView.Size = new System.Drawing.Size(796, 371);
+            this.ProductListDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ProductListDataGridView.Size = new System.Drawing.Size(1061, 457);
             this.ProductListDataGridView.TabIndex = 1;
-            // 
-            // YourSelectionLabel
-            // 
-            this.YourSelectionLabel.AutoSize = true;
-            this.YourSelectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YourSelectionLabel.Location = new System.Drawing.Point(12, 427);
-            this.YourSelectionLabel.Name = "YourSelectionLabel";
-            this.YourSelectionLabel.Size = new System.Drawing.Size(109, 16);
-            this.YourSelectionLabel.TabIndex = 2;
-            this.YourSelectionLabel.Text = "Your Selection";
-            // 
-            // YourSelectionTextBox
-            // 
-            this.YourSelectionTextBox.BackColor = System.Drawing.Color.White;
-            this.YourSelectionTextBox.Location = new System.Drawing.Point(127, 426);
-            this.YourSelectionTextBox.Name = "YourSelectionTextBox";
-            this.YourSelectionTextBox.ReadOnly = true;
-            this.YourSelectionTextBox.Size = new System.Drawing.Size(433, 20);
-            this.YourSelectionTextBox.TabIndex = 3;
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelButton.Location = new System.Drawing.Point(626, 424);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 4;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // NextButton
-            // 
-            this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NextButton.Location = new System.Drawing.Point(719, 424);
-            this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(75, 23);
-            this.NextButton.TabIndex = 4;
-            this.NextButton.Text = "Next";
-            this.NextButton.UseVisualStyleBackColor = true;
-            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
-            // 
-            // comp1004namesDataSet
-            // 
-            this.comp1004namesDataSet.DataSetName = "comp1004namesDataSet";
-            this.comp1004namesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataMember = "products";
-            this.productsBindingSource.DataSource = this.comp1004namesDataSet;
-            // 
-            // productsTableAdapter
-            // 
-            this.productsTableAdapter.ClearBeforeFill = true;
+            this.ProductListDataGridView.SelectionChanged += new System.EventHandler(this.ProductListDataGridView_SelectionChanged);
             // 
             // productIDDataGridViewTextBoxColumn
             // 
@@ -401,11 +352,71 @@
             this.webcamDataGridViewTextBoxColumn.Name = "webcamDataGridViewTextBoxColumn";
             this.webcamDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataMember = "products";
+            this.productsBindingSource.DataSource = this.comp1004namesDataSet;
+            // 
+            // comp1004namesDataSet
+            // 
+            this.comp1004namesDataSet.DataSetName = "comp1004namesDataSet";
+            this.comp1004namesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // YourSelectionLabel
+            // 
+            this.YourSelectionLabel.AutoSize = true;
+            this.YourSelectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YourSelectionLabel.Location = new System.Drawing.Point(16, 526);
+            this.YourSelectionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.YourSelectionLabel.Name = "YourSelectionLabel";
+            this.YourSelectionLabel.Size = new System.Drawing.Size(109, 16);
+            this.YourSelectionLabel.TabIndex = 2;
+            this.YourSelectionLabel.Text = "Your Selection";
+            // 
+            // YourSelectionTextBox
+            // 
+            this.YourSelectionTextBox.BackColor = System.Drawing.Color.White;
+            this.YourSelectionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YourSelectionTextBox.Location = new System.Drawing.Point(169, 524);
+            this.YourSelectionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.YourSelectionTextBox.Name = "YourSelectionTextBox";
+            this.YourSelectionTextBox.ReadOnly = true;
+            this.YourSelectionTextBox.Size = new System.Drawing.Size(576, 29);
+            this.YourSelectionTextBox.TabIndex = 3;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.Location = new System.Drawing.Point(835, 522);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(100, 28);
+            this.CancelButton.TabIndex = 4;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // NextButton
+            // 
+            this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NextButton.Location = new System.Drawing.Point(959, 522);
+            this.NextButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(100, 28);
+            this.NextButton.TabIndex = 4;
+            this.NextButton.Text = "Next";
+            this.NextButton.UseVisualStyleBackColor = true;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
+            // 
+            // productsTableAdapter
+            // 
+            this.productsTableAdapter.ClearBeforeFill = true;
+            // 
             // SelectForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 459);
+            this.ClientSize = new System.Drawing.Size(1095, 565);
             this.ControlBox = false;
             this.Controls.Add(this.NextButton);
             this.Controls.Add(this.CancelButton);
@@ -413,6 +424,8 @@
             this.Controls.Add(this.YourSelectionLabel);
             this.Controls.Add(this.ProductListDataGridView);
             this.Controls.Add(this.ComputerListLabel);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SelectForm";
@@ -421,8 +434,8 @@
             this.Text = "Select Your Computer";
             this.Load += new System.EventHandler(this.SelectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductListDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comp1004namesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comp1004namesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

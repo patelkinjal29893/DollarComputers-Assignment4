@@ -13,16 +13,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DollarComputers_Assignment4.Models;
+using System.Diagnostics;
 
 namespace DollarComputers_Assignment4
 {
     public partial class SelectForm : Form
     {
         //Reference for previous Form
-        public Form previousForm;        
+        public Form previousForm;
+
+        //Create an instance of ProductInfoForm
+        ProductInfoForm productInfoForm = new ProductInfoForm();
+
+        private ProductsContext db = new ProductsContext();
         public SelectForm()
         {
             InitializeComponent();
+        }
+        private void SelectForm_Load(object sender, EventArgs e)
+        {
+            //Create a object to get products table data from Database
+            List<product> ProductList = (from product in db.products
+                                         select product).ToList();
+
+            ProductListDataGridView.DataSource = ProductList;
+            productInfoForm.previousForm = this;            
         }
         /// <summary>
         /// This handler will terminate application when Cancel Button Clicked
@@ -33,7 +49,11 @@ namespace DollarComputers_Assignment4
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// Event Handler for Next Button CLick 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e)
         {
             ProductInfoForm productInfoForm = new ProductInfoForm();
@@ -41,18 +61,26 @@ namespace DollarComputers_Assignment4
 
             this.Hide();
 
-            productInfoForm.Show();
-        }
-
-        private void SelectForm_Load(object sender, EventArgs e)
+            productInfoForm.Show();          
+        }              
+        /// <summary>
+        /// Event handler for DataGridView Selection Index changed and Display data into TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProductListDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'comp1004namesDataSet.products' table. You can move, or remove it, as needed.
-            this.productsTableAdapter.Fill(this.comp1004namesDataSet.products);
-
             //For select full row from DataGridView
             this.ProductListDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-      
+            
+            //Select the current row from GridView
+            this.ProductListDataGridView.CurrentRow.Selected = true;
+
+            //Bound Selected data into TextBox
+            Program.product = (product)ProductListDataGridView.CurrentRow.DataBoundItem;        
+            YourSelectionTextBox.Text = Program.product.manufacturer + " " +
+                                        Program.product.model + " Priced at: $" +
+                                        Math.Round(Convert.ToDouble(Program.product.cost), 2);
         }
-       
     }
 }
