@@ -99,6 +99,12 @@ namespace DollarComputers_Assignment4
 
         private void ProductInfoForm_Load(object sender, EventArgs e)
         {
+            //Whenever User Open already saved file then openToolStripMenuItem activated
+            if(Program.product.productID == 0)
+            {
+                this.Show();
+                openToolStripMenuItem_Click(sender, e);
+            }
             //It displays Products basic Information
             ProductIDTextBox.Text = Program.product.productID.ToString();
             ConditionTextBox.Text = Program.product.condition;

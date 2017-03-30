@@ -56,11 +56,10 @@ namespace DollarComputers_Assignment4
         private void OpenButton_Click(object sender, EventArgs e)
         {
             //Create an Object of ProductInfoForm
-            ProductInfoForm productInfoForm = new ProductInfoForm();
-            productInfoForm.previousForm = this;
+            ProductInfoForm productInfoForm = new ProductInfoForm();            
 
-            //Hides this StartForm
-            this.Hide();
+            //Close this StartForm
+            this.Close();
 
             //Displays new ProductInfoForm
             productInfoForm.Show();
