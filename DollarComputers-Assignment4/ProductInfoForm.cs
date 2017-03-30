@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DollarComputers_Assignment4.Models;
 
 namespace DollarComputers_Assignment4
 {
@@ -20,6 +21,9 @@ namespace DollarComputers_Assignment4
     {
         //Reference for previous Form
         public Form previousForm;
+
+        //Connect to the Database Using dbContext Object
+        private ProductsContext dbProduct = new ProductsContext();
 
         public ProductInfoForm()
         {
@@ -85,6 +89,34 @@ namespace DollarComputers_Assignment4
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SelectAnotherProductButton_Click(sender, e);
+        }
+
+        private void ProductInfoForm_Load(object sender, EventArgs e)
+        {
+            //It displays Products basic Information
+            ProductIDTextBox.Text = Program.product.productID.ToString();
+            ConditionTextBox.Text = Program.product.condition;
+            CostTextBox.Text = "$ " + Math.Round(Convert.ToDouble(Program.product.cost),2).ToString();
+
+            //It displays Products Information into Product Info GroupBox
+            PlatformTextBox.Text = Program.product.platform;
+            ManufacturerTextBox.Text = Program.product.manufacturer;
+            OSTextBox.Text = Program.product.OS;
+            ModelTextBox.Text = Program.product.model;
+
+            //It displays  Products Tech Specs Information into Tech Specs GroupBox
+            MemoryTextBox.Text = Program.product.RAM_size;
+            CPUBrandTextBox.Text = Program.product.CPU_brand;
+            CPUTypeTextBox.Text = Program.product.CPU_type;
+
+            LCDSizeTextBox.Text = Program.product.screensize;
+            CPUNumberTextBox.Text = Program.product.CPU_number;
+            CPUSpeedTextBox.Text = Program.product.CPU_speed;
+
+            HDDTextBox.Text = Program.product.HDD_size;
+            GPUTypeTextBox.Text = Program.product.GPU_Type;
+            WebCamTextBox.Text = Program.product.webcam;
+            
         }
     }
 }

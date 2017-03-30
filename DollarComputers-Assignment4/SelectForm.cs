@@ -25,8 +25,9 @@ namespace DollarComputers_Assignment4
 
         //Create an instance of ProductInfoForm
         ProductInfoForm productInfoForm = new ProductInfoForm();
-
-        private ProductsContext db = new ProductsContext();
+        
+        //Connect to the Database Using dbContext Object
+        private ProductsContext dbProduct = new ProductsContext();
         public SelectForm()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace DollarComputers_Assignment4
         private void SelectForm_Load(object sender, EventArgs e)
         {
             //Create a object to get products table data from Database
-            List<product> ProductList = (from product in db.products
+            List<product> ProductList = (from product in dbProduct.products
                                          select product).ToList();
 
             ProductListDataGridView.DataSource = ProductList;
