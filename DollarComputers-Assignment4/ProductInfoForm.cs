@@ -27,6 +27,10 @@ namespace DollarComputers_Assignment4
         //Connect to the Database Using dbContext Object
         private ProductsContext dbProduct = new ProductsContext();
 
+        private StreamWriter _writer;
+        private StreamReader _reader;
+        private Int32 _productID;
+
         public ProductInfoForm()
         {
             InitializeComponent();
@@ -119,31 +123,40 @@ namespace DollarComputers_Assignment4
             GPUTypeTextBox.Text = Program.product.GPU_Type;
             WebCamTextBox.Text = Program.product.webcam;            
         }
-
+        /// <summary>
+        /// This is handler for save MenuStrip click Event for Save File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Create Variables
             DialogResult result;
             string fileName;
 
+            //Assign Properties to SaveDialog
             SaveProductFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
             SaveProductFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
             SaveProductFileDialog.Title = "Save File";
-
+            
+            //Open DialogBox with the use of ShowDialog Method
             result = SaveProductFileDialog.ShowDialog();
 
+            //If the result is OK then save the File
             if (result == DialogResult.OK)
             {
                 fileName = SaveProductFileDialog.FileName;
 
                 try
                 {
-                    if(File.Exists("Product.txt"))
+                    //if Product file is already exist then It will delete it
+                    if (File.Exists("Product.txt"))
                     {
                         File.Delete("Product.txt");
                     }
 
                     //Open a Saved Stream 
-                    StreamWriter _writer = new StreamWriter("Product.txt", true);
+                    this._writer = new StreamWriter("Product.txt", true);
 
                     //Write all TextBox values in buffer
                     //Write Product basic Information
@@ -181,9 +194,78 @@ namespace DollarComputers_Assignment4
                 }
             }
         }
-    }
+        /// <summary>
+        /// This is handler for Open MenuStrip click event for Open Existing File
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Create Variables
+            DialogResult result;
+            string fileName;
 
-    internal class SaveProductFileDialog
-    {
+            //Assign Properties to OpenDialog
+            OpenProductFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            OpenProductFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            OpenProductFileDialog.Title = "Open File";
+            result = OpenProductFileDialog.ShowDialog();
+
+            //If result is Ok then Open Saved File
+            if(result == DialogResult.OK)
+            {
+                //pass value to the FileName
+                fileName = OpenProductFileDialog.FileName;
+                try
+                {
+                    this._reader = new StreamReader(fileName);
+
+                    //If there is something to read
+                    if(_reader.Peek() != -1)
+                    {     
+                        //Read all saved data from buffer using ReadLine 
+                        //Read data of Product Basic Information                  
+                        ProductIDTextBox.Text = this._reader.ReadLine();
+                        ConditionTextBox.Text = this._reader.ReadLine();
+                        CostTextBox.Text = this._reader.ReadLine();
+
+                        //Read data of Product Basic Information from Product Info GroupBox
+                        PlatformTextBox.Text = this._reader.ReadLine();
+                        ManufacturerTextBox.Text = this._reader.ReadLine();
+                        OSTextBox.Text = this._reader.ReadLine();
+                        ModelTextBox.Text = this._reader.ReadLine();
+
+                        //Read data of Tech Specs Information from Tech Specs GroupBox
+                        MemoryTextBox.Text = this._reader.ReadLine();
+                        CPUBrandTextBox.Text = this._reader.ReadLine();
+                        CPUTypeTextBox.Text = this._reader.ReadLine();                    
+                        LCDSizeTextBox.Text = this._reader.ReadLine();
+                        CPUNumberTextBox.Text = this._reader.ReadLine();
+                        CPUSpeedTextBox.Text = this._reader.ReadLine();
+                        HDDTextBox.Text = this._reader.ReadLine();
+                        GPUTypeTextBox.Text = this._reader.ReadLine();
+                        WebCamTextBox.Text = this._reader.ReadLine();                        
+
+                        _productID = Convert.ToInt32(ProductIDTextBox.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("File Empty -No data to read", "Error Reading File",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    this._reader.Close();                    
+                }
+                catch (Exception exception)
+                {
+                    Debug.WriteLine(exception.Message);
+                    MessageBox.Show("Error Reading File", "File Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //Fetch Product Id from database and store into _productID variable            
+                Program.product = (from product in dbProduct.products
+                                   where product.productID == _productID
+                                   select product).FirstOrDefault();
+            }
+        }
     }
 }
