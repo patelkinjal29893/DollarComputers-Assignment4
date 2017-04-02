@@ -26,11 +26,11 @@ namespace DollarComputers_Assignment4
 
         //Connect to the Database Using dbContext Object
         private ProductsContext dbProduct = new ProductsContext();
-
+        
+        //Create Private Variables
         private StreamWriter _writer;
         private StreamReader _reader;
         private Int32 _productID;
-
         public ProductInfoForm()
         {
             InitializeComponent();
@@ -96,7 +96,11 @@ namespace DollarComputers_Assignment4
         {
             SelectAnotherProductButton_Click(sender, e);
         }
-
+        /// <summary>
+        /// This is handler of ProductInfoForm Load event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProductInfoForm_Load(object sender, EventArgs e)
         {
             //Whenever User Open already saved file then openToolStripMenuItem activated
@@ -152,7 +156,6 @@ namespace DollarComputers_Assignment4
             if (result == DialogResult.OK)
             {
                 fileName = SaveProductFileDialog.FileName;
-
                 try
                 {
                     //if Product file is already exist then It will delete it
@@ -160,10 +163,8 @@ namespace DollarComputers_Assignment4
                     {
                         File.Delete("Product.txt");
                     }
-
                     //Open a Saved Stream 
                     this._writer = new StreamWriter("Product.txt", true);
-
                     //Write all TextBox values in buffer
                     //Write Product basic Information
                     _writer.WriteLine(ProductIDTextBox.Text);
@@ -259,7 +260,7 @@ namespace DollarComputers_Assignment4
                         MessageBox.Show("File Empty -No data to read", "Error Reading File",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    this._reader.Close();                    
+                    this._reader.Close();   //Flushes the Buffer                 
                 }
                 catch (Exception exception)
                 {

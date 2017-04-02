@@ -101,5 +101,42 @@ namespace DollarComputers_Assignment4
 
             Application.Exit();
         }
+        /// <summary>
+        /// This is handler for OrderForm Load event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OrderForm_Load(object sender, EventArgs e)
+        {            
+            //It will fill up all TextBoxes with user selected option
+            //Display Product Components 
+            ConditionTextBox.Text = Program.product.condition;
+            ManufacturerTextBox.Text = Program.product.manufacturer;
+            PlatformTextBox.Text = Program.product.platform;
+            ModelTxtBox.Text = Program.product.model;
+
+            //Display all Specifications of User Selected Choice
+            LCDSizeTextBox.Text = Program.product.screensize;
+            MemoryTextBox.Text = Program.product.RAM_size;
+            CPUBrandTextBox.Text = Program.product.CPU_brand;
+            CPUTypeTextBox.Text = Program.product.CPU_type;
+            CPUnumberTextBox.Text = Program.product.CPU_number;
+            CPUSpeedTextBox.Text = Program.product.CPU_speed;
+            HDDTextBox.Text = Program.product.HDD_size;
+            GPUTypeTextBox.Text = Program.product.GPU_Type;
+            WebCamTextBox.Text = Program.product.webcam;
+            OSTextBox.Text = Program.product.OS;
+
+            //Calculate Total Sales tax on Laptop Prices
+            double price = Math.Round(Convert.ToDouble(Program.product.cost),2);
+            double baseSalesTax = Convert.ToDouble(Program.product.cost);
+            double finalSaleTax = Math.Round(baseSalesTax * 0.13,2);
+            double totalAmount = price + finalSaleTax;
+
+            //Display all total prices with sales tax in all TextBoxes
+            PriceTextBox.Text = "$" + price.ToString();
+            SalesTaxTextBox.Text = "$" + finalSaleTax.ToString();
+            TotalTextBox.Text = "$" + totalAmount.ToString();
+        }
     }
 }
